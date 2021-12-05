@@ -10,7 +10,7 @@ function main() {
     var height = svg.attr("height")
     var radius = Math.min(width, height) / 2
 
-    var g = svg.append("g").attr("transform", "translate('+ width / 2 +')")
+    var g = svg.append("g").attr('transform', 'translate('+ width / 2 + ',' + height / 2 + ')');
 
     //constructs new ordinal scale -- order is key with ordinal data
     var color = d3.scaleOrdinal(['#e40303', '#ff8c00', '#ffed00', '#008026', '#004dff', '#750787'])
@@ -24,4 +24,10 @@ function main() {
         .data(pie(data))
         .enter().append('g')
         .attr('class', 'arc')
+
+    arcs.append('path')
+        .attr('fill', function(d, i) {
+            return color(i)
+        })
+        .attr('d', arc);
 }
