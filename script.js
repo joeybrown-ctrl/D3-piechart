@@ -16,5 +16,12 @@ function main() {
     var color = d3.scaleOrdinal(['#e40303', '#ff8c00', '#ffed00', '#008026', '#004dff', '#750787'])
 
     var pie = d3.pie();
-    
+    var arc = d3.arc()
+        .innerRadius(0)
+        .outerRadius(radius);
+
+    var arcs = g.selectAll('arc')
+        .data(pie(data))
+        .enter().append('g')
+        .attr('class', 'arc')
 }
